@@ -1,0 +1,14 @@
+{
+    "Changes": [{
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "new.sebastiankraska.com",
+        "Type": "A",
+        "AliasTarget": {
+          "HostedZoneId": "Z2FDTNDATAQYW2",
+          "DNSName": "d5bgek5t6ulkj.cloudfront.net.",
+          "EvaluateTargetHealth": false
+        }
+      }
+    }]
+  }
