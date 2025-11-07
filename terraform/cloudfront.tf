@@ -39,6 +39,12 @@ resource "aws_cloudfront_distribution" "blog" {
     default_ttl            = 3600  # 1 hour
     max_ttl                = 86400 # 24 hours
     compress               = true
+
+    # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution#function_association-1
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.rewrite-to-indexhtml.arn
+    }
   }
 
   # Custom error responses (optional but good for SPAs)
