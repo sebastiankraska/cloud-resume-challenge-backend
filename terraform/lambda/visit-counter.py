@@ -24,4 +24,9 @@ def lambda_handler(event, context):
     new_count = response['Attributes']['visits']
     print(f"new count is {new_count}")
 
-    return json.dumps({"visits": int(new_count)})
+    # return json.dumps({"visits": int(new_count)})
+    return {
+    'statusCode': 200,
+    'body': json.dumps({"visits": int(new_count)}),
+    'headers': {'Content-Type': 'application/json'}
+    }

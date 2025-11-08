@@ -43,8 +43,8 @@ resource "aws_iam_role_policy" "lambda_dynamodb" {
 # Package the Lambda function code
 data "archive_file" "lambda" {
   type        = "zip"
-  source_file = "${path.module}/lambda/playground.py"
-  output_path = "${path.module}/lambda/playground.zip"
+  source_file = "${path.module}/lambda/visit-counter.py"
+  output_path = "${path.module}/lambda/visit-counter.zip"
 }
 
 # Lambda function
@@ -52,7 +52,7 @@ resource "aws_lambda_function" "lambda" {
   filename         = data.archive_file.lambda.output_path
   function_name    = "visitor_counter"
   role             = aws_iam_role.lambda.arn
-  handler          = "playground.lambda_handler"
+  handler          = "visit-counter.lambda_handler"
   source_code_hash = data.archive_file.lambda.output_base64sha256
 
   runtime = "python3.13"
@@ -67,6 +67,6 @@ resource "aws_lambda_function" "lambda" {
 
   tags = {
     Environment = "production"
-    Application = "playground"
+    Application = "visit-counter"
   }
 }
