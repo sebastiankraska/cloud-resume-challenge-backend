@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "lambda_dynamodb" {
       "dynamodb:UpdateItem",
     ]
     resources = [
-      aws_dynamodb_table.visitor_counter.arn
+      aws_dynamodb_table.cloudresumechallenge.arn
     ]
   }
 }
