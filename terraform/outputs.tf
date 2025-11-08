@@ -15,5 +15,5 @@ output "cloudfront_domain_name" {
 
 output "website_url" {
   description = "Website URL"
-  value       = "https://${var.subdomain_name}.${var.root_domain}"
+  value       = "https://${var.root_domain}"
 }

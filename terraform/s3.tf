@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "blog" {
-  bucket = "${var.subdomain_name}.${var.root_domain}"
+  bucket = "${var.root_domain}"
   force_destroy = true
 
   tags = {

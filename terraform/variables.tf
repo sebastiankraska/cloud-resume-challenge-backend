@@ -4,12 +4,6 @@ variable "root_domain" {
   default     = "sebastiankraska.com"
 }
 
-variable "subdomain_name" {
-  description = "The subdomain without the root domain, e.g. new"
-  type        = string
-  default     = "next"
-}
-
 variable "cloudfront_distribution_domain" {
   type    = string
   default = "d5bgek5t6ulkj.cloudfront.net"

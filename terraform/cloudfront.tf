@@ -1,5 +1,5 @@
 resource "aws_cloudfront_origin_access_control" "blog" {
-  name                              = "${var.subdomain_name}.${var.root_domain}"
+  name                              = "${var.root_domain}"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
@@ -11,7 +11,7 @@ resource "aws_cloudfront_distribution" "blog" {
   default_root_object = "index.html"
   price_class         = "PriceClass_100"
 
-  aliases = ["${var.subdomain_name}.${var.root_domain}"]
+  aliases = ["${var.root_domain}"]
 
 
   # S3 origin (private bucket)
