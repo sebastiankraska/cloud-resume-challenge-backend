@@ -1,3 +1,4 @@
+
 # IAM role for Lambda execution
 data "aws_iam_policy_document" "assume_role" {
   statement {
@@ -12,37 +13,60 @@ data "aws_iam_policy_document" "assume_role" {
   }
 }
 
-resource "aws_iam_role" "example" {
-  name               = "lambda_execution_role"
+resource "aws_iam_role" "lambda" {
+  name               = "lambda_execution_role_2"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_logs" {
+  role       = aws_iam_role.lambda.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+data "aws_iam_policy_document" "lambda_dynamodb" {
+  statement {
+    actions = [
+      "dynamodb:UpdateItem",
+    ]
+    resources = [
+      aws_dynamodb_table.visitor_counter.arn
+    ]
+  }
+}
+
+resource "aws_iam_role_policy" "lambda_dynamodb" {
+  name   = "lambda_dynamodb_access"
+  role   = aws_iam_role.lambda.name
+  policy = data.aws_iam_policy_document.lambda_dynamodb.json
+}
+
 # Package the Lambda function code
-data "archive_file" "example" {
+data "archive_file" "lambda" {
   type        = "zip"
   source_file = "${path.module}/lambda/playground.py"
   output_path = "${path.module}/lambda/playground.zip"
 }
 
 # Lambda function
-resource "aws_lambda_function" "example" {
-  filename         = data.archive_file.example.output_path
-  function_name    = "example_lambda_function"
-  role             = aws_iam_role.example.arn
+resource "aws_lambda_function" "lambda" {
+  filename         = data.archive_file.lambda.output_path
+  function_name    = "visitor_counter"
+  role             = aws_iam_role.lambda.arn
   handler          = "playground.lambda_handler"
-  source_code_hash = data.archive_file.example.output_base64sha256
+  source_code_hash = data.archive_file.lambda.output_base64sha256
 
   runtime = "python3.13"
 
   environment {
     variables = {
-      ENVIRONMENT = "production"
-      LOG_LEVEL   = "info"
+    DYNAMODB_TABLE_NAME = var.dynamo_table_name
+    ENVIRONMENT         = "PRODUCTION"
+    AWS_LAMBDA_LOG_LEVEL = "INFO"
     }
   }
 
   tags = {
     Environment = "production"
-    Application = "example"
+    Application = "playground"
   }
 }

@@ -1,5 +1,5 @@
 resource "aws_dynamodb_table" "visitor_counter" {
-  name = "visitor-counter"
+  name = var.dynamo_table_name
   billing_mode = "PAY_PER_REQUEST"
   hash_key = "site-counter"
   attribute {

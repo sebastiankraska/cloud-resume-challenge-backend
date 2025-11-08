@@ -19,3 +19,9 @@ variable "cloudfront_hosted_zone_id" {
   type    = string
   default = "Z2FDTNDATAQYW2"
 }
+
+variable "dynamo_table_name" {
+  type = string
+  default = "visitor-counter"
+  description = "DynamoDB table name for visitor counter"
+}
