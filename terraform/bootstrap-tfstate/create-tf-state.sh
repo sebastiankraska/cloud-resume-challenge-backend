@@ -1,6 +1,8 @@
 #!/bin/bash
 # Terraform can lock the Statefile with S3 and does not require a dynamoDB table anymore as of November 2025, that is why I do not create a DynamoDB for locking, see https://developer.hashicorp.com/terraform/language/backend/s3
 
+# For further protection, consider enabling "Multi-factor authentication (MFA) delete". I have no time for this right now becauses it seems to require the root account instead of IAM
+
 # break on any error
 set -euo pipefail
 
