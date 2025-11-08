@@ -40,6 +40,11 @@ output "api_endpoint" {
   value = aws_apigatewayv2_stage.prod.invoke_url
 }
 
+output "api_gateway_url" {
+  description = "Full API Gateway endpoint URL with path"
+  value       = "${aws_apigatewayv2_api.visitor_counter.api_endpoint}${trimprefix(aws_apigatewayv2_route.get_count.route_key, "GET ")}"
+}
+
 
 # resource "aws_apigatewayv2_route" "example" {
 #   api_id    = aws_apigatewayv2_api.example.id
