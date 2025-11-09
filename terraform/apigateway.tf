@@ -44,34 +44,3 @@ output "api_gateway_url" {
   description = "Full API Gateway endpoint URL with path"
   value       = "${aws_apigatewayv2_api.visitor_counter.api_endpoint}${trimprefix(aws_apigatewayv2_route.get_count.route_key, "GET ")}"
 }
-
-
-# resource "aws_apigatewayv2_route" "example" {
-#   api_id    = aws_apigatewayv2_api.example.id
-#   route_key = "$default"
-# }
-
-# resource "aws_lambda_function" "example" {
-#   filename      = "example.zip"
-#   function_name = "Example"
-#   role          = aws_iam_role.example.arn
-#   handler       = "index.handler"
-#   runtime       = "nodejs20.x"
-# }
-
-# resource "aws_apigatewayv2_integration" "example" {
-#   api_id           = aws_apigatewayv2_api.example.id
-#   integration_type = "AWS_PROXY"
-
-#   connection_type           = "INTERNET"
-#   content_handling_strategy = "CONVERT_TO_TEXT"
-#   description               = "Lambda example"
-#   integration_method        = "POST"
-#   integration_uri           = aws_lambda_function.example.invoke_arn
-#   passthrough_behavior      = "WHEN_NO_MATCH"
-# }
-
-# resource "aws_apigatewayv2_stage" "example" {
-#   api_id = aws_apigatewayv2_api.example.id
-#   name   = "example-stage"
-# }
