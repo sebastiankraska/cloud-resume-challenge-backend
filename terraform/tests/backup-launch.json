@@ -1,0 +1,25 @@
+// VSCode Python Debugger Configuration
+// Purpose: Enables debugging Python files with breakpoints, variable inspection, and step-through execution
+
+// How to use:
+// Prerequisites:
+//   - Virtual environment must exist: cd backend && python -m venv .venv
+//   - Activate: cd backend && source .venv/bin/activate
+// Install dependencies (inside of the venv):
+// - pip install -r requirements.txt
+// Make VS Code use it:
+// - Copy and rename the backup file to the correct location: cp backend/terraform/tests/backup-launch.json .vscode/launch.json
+
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "python": "${workspaceFolder}/backend/.venv/bin/python"
+    }
+  ]
+}
