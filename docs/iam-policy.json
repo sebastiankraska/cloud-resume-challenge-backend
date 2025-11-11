@@ -161,9 +161,7 @@
         "iam:UntagRole"
       ],
       "Resource": [
-        // "arn:aws:iam::*:role/lambda-*",
-        // "arn:aws:iam::*:role/*-lambda-role,"  
-        "arn:aws:iam::*:role/lambda_*" // because the role is currently called: lambda_execution_role_2
+        "arn:aws:iam::*:role/lambda_*"
       ]
     },
     {
