@@ -16,9 +16,9 @@ resource "aws_apigatewayv2_route" "get_count" {
 }
 
 resource "aws_apigatewayv2_integration" "lambda" {
-  api_id           = aws_apigatewayv2_api.visitor_counter.id
-  integration_type = "AWS_PROXY"
-  integration_uri  = aws_lambda_function.lambda.invoke_arn
+  api_id                 = aws_apigatewayv2_api.visitor_counter.id
+  integration_type       = "AWS_PROXY"
+  integration_uri        = aws_lambda_function.lambda.invoke_arn
   payload_format_version = "2.0" // Without this, API Gateway might not know how to handle the Lambda response properly (resulting in "Internal Server Error")
 }
 

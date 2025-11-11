@@ -1,5 +1,5 @@
 resource "aws_cloudfront_origin_access_control" "blog" {
-  name                              = "${var.root_domain}"
+  name                              = var.root_domain
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
@@ -55,7 +55,7 @@ resource "aws_cloudfront_distribution" "blog" {
   }
 
   # SSL certificate (requires ACM certificate - see next step)
-viewer_certificate {
+  viewer_certificate {
     acm_certificate_arn      = aws_acm_certificate.blog.arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2021"

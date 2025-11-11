@@ -59,9 +59,9 @@ resource "aws_lambda_function" "lambda" {
 
   environment {
     variables = {
-    DYNAMODB_TABLE_NAME = var.dynamo_table_name
-    ENVIRONMENT         = "PRODUCTION"
-    AWS_LAMBDA_LOG_LEVEL = "INFO"
+      DYNAMODB_TABLE_NAME  = var.dynamo_table_name
+      ENVIRONMENT          = "PRODUCTION"
+      AWS_LAMBDA_LOG_LEVEL = "INFO"
     }
   }
 
