@@ -38,6 +38,12 @@
         "s3:GetAccelerateConfiguration",
         "s3:GetBucketRequestPayment",
         "s3:GetBucketLogging",
+        "s3:GetLifecycleConfiguration",
+        "s3:GetReplicationConfiguration",
+        "s3:GetBucketNotification",
+        "s3:GetBucketObjectLockConfiguration",
+        "s3:GetBucketTagging",
+        "s3:GetBucketLocation",
         "s3:ListBucket"
       ],
       "Resource": "arn:aws:s3:::*"
@@ -52,6 +58,7 @@
         "cloudfront:UpdateDistribution",
         "cloudfront:DeleteDistribution",
         "cloudfront:TagResource",
+        "cloudfront:ListTagsForResource",
         "cloudfront:CreateCloudFrontOriginAccessIdentity",
         "cloudfront:GetCloudFrontOriginAccessIdentity",
         "cloudfront:DeleteCloudFrontOriginAccessIdentity",
