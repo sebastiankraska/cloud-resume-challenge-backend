@@ -35,6 +35,7 @@
         "s3:GetBucketPublicAccessBlock",
         "s3:PutBucketPublicAccessBlock",
         "s3:GetBucketAcl",
+        "s3:GetAccelerateConfiguration",
         "s3:ListBucket"
       ],
       "Resource": "arn:aws:s3:::*"
@@ -106,7 +107,8 @@
         "dynamodb:TagResource",
         "dynamodb:UntagResource",
         "dynamodb:ListTagsOfResource",
-        "dynamodb:DescribeContinuousBackups"
+        "dynamodb:DescribeContinuousBackups",
+        "dynamodb:DescribeTimeToLive"
       ],
       "Resource": "arn:aws:dynamodb:eu-central-1:*:table/*"
     },
@@ -125,7 +127,8 @@
         "lambda:InvokeFunction",
         "lambda:TagResource",
         "lambda:UntagResource",
-        "lambda:ListTags"
+        "lambda:ListTags",
+        "lambda:ListVersionsByFunction"
       ],
       "Resource": "arn:aws:lambda:eu-central-1:*:function:*"
     },
