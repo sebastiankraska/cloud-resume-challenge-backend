@@ -37,6 +37,7 @@
         "s3:GetBucketAcl",
         "s3:GetAccelerateConfiguration",
         "s3:GetBucketRequestPayment",
+        "s3:GetBucketLogging",
         "s3:ListBucket"
       ],
       "Resource": "arn:aws:s3:::*"
