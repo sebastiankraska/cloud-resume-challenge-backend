@@ -40,7 +40,7 @@ jobs:
 
       - name: Terraform Format Check
         run: terraform fmt -check -recursive
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Terraform Init
         run: terraform init
