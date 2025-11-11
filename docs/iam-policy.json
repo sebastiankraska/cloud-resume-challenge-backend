@@ -36,6 +36,7 @@
         "s3:PutBucketPublicAccessBlock",
         "s3:GetBucketAcl",
         "s3:GetAccelerateConfiguration",
+        "s3:GetBucketRequestPayment",
         "s3:ListBucket"
       ],
       "Resource": "arn:aws:s3:::*"
@@ -128,7 +129,8 @@
         "lambda:TagResource",
         "lambda:UntagResource",
         "lambda:ListTags",
-        "lambda:ListVersionsByFunction"
+        "lambda:ListVersionsByFunction",
+        "lambda:GetFunctionCodeSigningConfig"
       ],
       "Resource": "arn:aws:lambda:eu-central-1:*:function:*"
     },
