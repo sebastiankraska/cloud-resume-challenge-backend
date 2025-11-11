@@ -34,6 +34,7 @@
         "s3:PutEncryptionConfiguration",
         "s3:GetBucketPublicAccessBlock",
         "s3:PutBucketPublicAccessBlock",
+        "s3:GetBucketAcl",
         "s3:ListBucket"
       ],
       "Resource": "arn:aws:s3:::*"
@@ -86,7 +87,8 @@
         "route53:ListHostedZones",
         "route53:ChangeResourceRecordSets",
         "route53:GetChange",
-        "route53:ListResourceRecordSets"
+        "route53:ListResourceRecordSets",
+        "route53:ListTagsForResource"
       ],
       "Resource": "*"
     },
@@ -103,7 +105,8 @@
         "dynamodb:Scan",
         "dynamodb:TagResource",
         "dynamodb:UntagResource",
-        "dynamodb:ListTagsOfResource"
+        "dynamodb:ListTagsOfResource",
+        "dynamodb:DescribeContinuousBackups"
       ],
       "Resource": "arn:aws:dynamodb:eu-central-1:*:table/*"
     },
@@ -158,8 +161,9 @@
         "iam:UntagRole"
       ],
       "Resource": [
-        "arn:aws:iam::*:role/lambda-*",
-        "arn:aws:iam::*:role/*-lambda-role"
+        // "arn:aws:iam::*:role/lambda-*",
+        // "arn:aws:iam::*:role/*-lambda-role,"  
+        "arn:aws:iam::*:role/lambda_*" // because the role is currently called: lambda_execution_role_2
       ]
     },
     {
