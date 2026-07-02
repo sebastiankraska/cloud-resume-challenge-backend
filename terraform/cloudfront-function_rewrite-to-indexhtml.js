@@ -12,11 +12,10 @@ function handler(event) {
         request.uri = "/index.html";
     }
 
-    // If the request has no file extension (clean URL like /tags/meta),
-    // rewrite to /tags/meta.html
-    // Quartz generates flat .html files, not nested index.html like Hugo
+    // If the request has no file extension (clean URL like /tags),
+    // rewrite to /tags/index.html — Quartz generates directory-style pages
     else if (!uri.split("/").pop().includes(".")) {
-        request.uri += ".html";
+        request.uri += "/index.html";
     }
 
     return request;

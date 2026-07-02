@@ -49,6 +49,12 @@ resource "aws_cloudfront_distribution" "blog" {
 
   # Custom error responses (optional but good for SPAs)
   custom_error_response {
+    error_code         = 403
+    response_code      = 404
+    response_page_path = "/404.html"
+  }
+
+  custom_error_response {
     error_code         = 404
     response_code      = 404
     response_page_path = "/404.html"
