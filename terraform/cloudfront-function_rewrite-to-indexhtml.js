@@ -12,10 +12,11 @@ function handler(event) {
         request.uri = "/index.html";
     }
 
-    // If the request has no file extension (clean URL like /tags),
-    // rewrite to /tags/index.html — Quartz generates directory-style pages
+    // Quartz taxonomy pages (tags/*) use directory-style index.html.
+    // All other extensionless paths are flat .html files.
     else if (!uri.split("/").pop().includes(".")) {
-        request.uri += "/index.html";
+        var isDirectoryPath = uri === "/tags" || uri.startsWith("/tags/");
+        request.uri += isDirectoryPath ? "/index.html" : ".html";
     }
 
     return request;
