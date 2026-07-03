@@ -17,3 +17,19 @@ output "website_url" {
   description = "Website URL"
   value       = "https://${var.root_domain}"
 }
+
+output "homelab_acme_access_key_id" {
+  description = "Access key ID for the homelab ACME user (AWS_ACCESS_KEY_ID in homelab .env)"
+  value       = aws_iam_access_key.homelab_acme.id
+}
+
+output "homelab_acme_secret_access_key" {
+  description = "Secret access key for the homelab ACME user (AWS_SECRET_ACCESS_KEY in homelab .env)"
+  value       = aws_iam_access_key.homelab_acme.secret
+  sensitive   = true
+}
+
+output "hosted_zone_id" {
+  description = "Route53 hosted zone ID (AWS_HOSTED_ZONE_ID in homelab .env)"
+  value       = data.aws_route53_zone.main.zone_id
+}
